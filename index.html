@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Húsvéti Küldetés</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 400px;
+        }
+        h1 { color: #2d3436; }
+        input {
+            width: 80%;
+            padding: 10px;
+            margin: 20px 0;
+            border: 2px solid #dfe6e9;
+            border-radius: 5px;
+            outline: none;
+        }
+        button {
+            background-color: #6c5ce7;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover { background-color: #a29bfe; }
+        #qr-container {
+            display: none;
+            margin-top: 20px;
+            animation: fadeIn 1s;
+        }
+        img { max-width: 100%; border: 5px solid #fff; border-radius: 10px; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>🐰 Titkos Küldetés</h1>
+    <h2>Első szint</h2>
+    <h4>Mi a húsvét előtti 40 napos időszak neve?</h4>
+    <p>Írd be a jelszót a QR-kód feloldásához!</p>
+    
+    <input type="text" id="answer" placeholder="Mi a titkos válasz?">
+    <br>
+    <button onclick="checkAnswer()">Ellenőrzés</button>
+
+    <div id="qr-container">
+        <h3>Gratulálok! Íme a kódod:</h3>
+        <img id="qr-image" src="" alt="QR Kód">
+    </div>
+</div>
+
+<script>
+    function checkAnswer() {
+        const userAnswer = document.getElementById('answer').value.toLowerCase().trim();
+        
+        // IDE ÍRD A HELYES VÁLASZT:
+        const correctAnswer = "Nagyböjt";
+        
+        // IDE MÁSOLD A QR KÓD KÉPÉNEK LINKJÉT:
+        const qrUrl = "masodik_szint.png";
+
+        if (userAnswer === correctAnswer) {
+            document.getElementById('qr-image').src = qrUrl;
+            document.getElementById('qr-container').style.display = 'block';
+            document.getElementById('answer').style.borderColor = "#55efc4";
+        } else {
+            alert("Sajnos nem ez a helyes válasz! Próbáld újra.");
+            document.getElementById('answer').style.borderColor = "#ff7675";
+        }
+    }
+</script>
+
+</body>
+</html>
