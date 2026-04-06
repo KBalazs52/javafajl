@@ -70,15 +70,16 @@
 
 <script>
     function checkAnswer() {
+        // Kisbetűssé tesszük és levágjuk a szóközöket
         const userAnswer = document.getElementById('answer').value.toLowerCase().trim();
         
-        // IDE ÍRD A HELYES VÁLASZT:
-        const correctAnswer = "Nagyböjt";
+        // Definiáljuk a jó válaszokat (mindent kisbetűvel!)
+        const joValaszok = ["nagyböjt", "nagybojt", "nagyböjtöt", "nagybojtot"];
         
-        // IDE MÁSOLD A QR KÓD KÉPÉNEK LINKJÉT:
-        const qrUrl = "masodik_szint.png";
+        const qrUrl = "harmadik_szint.png";
 
-        if (userAnswer === correctAnswer) {
+        // Megnézzük, hogy a beírt szó benne van-e a listánkban
+        if (joValaszok.includes(userAnswer)) {
             document.getElementById('qr-image').src = qrUrl;
             document.getElementById('qr-container').style.display = 'block';
             document.getElementById('answer').style.borderColor = "#55efc4";
